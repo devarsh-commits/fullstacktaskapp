@@ -21,7 +21,7 @@ const Home = () => {
        }
     }
      const Handelsubmit=async(e)=>{
-        !todo.trim('')?alert("You have not added your task"): setComtodo({id:uuidv4(),todo,isCompleted:false,day:date.toString().split(' ').slice(0,1).join(),orderby:Date.now()})
+        !todo.trim('')?alert("You have not added your task"): setComtodo({id:uuidv4(),todo,isCompleted:false,day:date.toString().split(' ').slice(0,1).join(),orderby:Date.now()});
         settodo('')
     }
     useEffect(()=>{ fetchTask()})
