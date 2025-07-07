@@ -18,6 +18,18 @@ app.post('/',(req,res)=>{
   Todo.save()
   res.send('Done')
 })
+app.put('/:id',async(req,res)=>{
+   const updatedtask=await todo.findByIdAndUpdate(
+    req.params.id,
+    {$set:req.body},
+    {new:true}
+   );
+   res.json(updatedtask);
+})
+app.delete('/:id',async(req,res)=>{
+    await todo.findByIdAndDelete(req.params.id);
+    res.send("Task deleted Successfully!")
+})
 app.listen(port,()=>{
     console.log('Your servers is running')
 })
