@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Nav from './Nav'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import { Todocontext } from './Context/todocontext';
 // import { json } from 'express';
 
 const Home = () => {
@@ -69,7 +70,7 @@ const Home = () => {
     console.log(tasks)
 
     return (
-        <div className='w-screen'>
+         <div className='w-screen'>
             <nav className='w-screen'><Nav /></nav>
             <div className="w-4/5  mx-auto min-h-[85vh] m-2 rounded-2xl bg-orange-200 p-5 border">
                 <div className="box1">
