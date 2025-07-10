@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import './Home.css'
 import Nav from './Nav'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
@@ -81,7 +82,7 @@ const Home = () => {
                         <input type="checkbox" checked={finished} onChange={HandelFinished} id='finished'/></div>
                         </div>
                 </div>
-                <div className="mytasks">
+                <div className="mytasks m-2 h-[60vh] overflow-auto">
                     {tasks.map((data) => {
                      return  ( finished ||!data.isCompleted)&& <div className='flex gap-10 m-5 p-4 text-xl font-medium bg-orange-100 rounded-2xl border'>
                             <div className={data.isCompleted?'line-through w-2/4':'w-2/4'}>{data.todo}</div>

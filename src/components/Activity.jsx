@@ -1,95 +1,79 @@
-import React from 'react'
-import Nav from './Nav'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Nav from './Nav';
+
 const Activity = () => {
   const [task, settask] = useState([]);
-  const [Moncount, setMoncount] = useState(0);
-  const [Tuescount, setTuescount] = useState(0);
-  const [Wedcount, setWedcount] = useState(0);
-  const [Thurscount, setThurscount] = useState(0);
-  const [Fricount, setFricount] = useState(0);
-  const [Satcount, setSatcount] = useState(0);
-  const [Suncount, setSuncount] = useState(0);
+
+  // State variables for each day's count
+  const [mon, setMon] = useState(0);
+  const [tue, setTue] = useState(0);
+  const [wed, setWed] = useState(0);
+  const [thu, setThu] = useState(0);
+  const [fri, setFri] = useState(0);
+  const [sat, setSat] = useState(0);
+  const [sun, setSun] = useState(0);
+
+  const Delay=()=>new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 2000);
+  })
 
   const fetchdata = async () => {
     try {
       const r = await fetch('http://localhost:3000/finished/');
       const res = await r.json();
       settask(res);
-      // console.log(task)
     } catch (err) {
-      console.log("There is error fetching data", err)
+      console.log("There is error fetching data", err);
     }
-  }
-  // function to seperate days
+  };
 
+  const fetchDays = (day, arr) => {
+    return arr.filter(data => data.day === day);
+  };
 
-  // const Setdays = async () => {
-  //   const fetchdata = async () => {
-  //     let monData = await fetchDays("Mon", task);
-  //     setMoncount(monData.length);
-
-  //     const tuesData = await fetchDays("Tue", task);
-  //     setTuescount(tuesData.length);
-
-  //     const wedData = await fetchDays("Wed", task);
-  //     setWedcount(wedData.length);
-
-  //     const thursData = await fetchDays("Thu", task);
-  //     setThurscount(thursData.length);
-
-  //     const friData = await fetchDays("Fri", task);
-  //     setFricount(friData.length);
-
-  //     const satData = await fetchDays("Sat", task);
-  //     setSatcount(satData.length);
-
-  //     const sunData = await fetchDays("Sun", task);
-  //     setSuncount(sunData.length);
-  //   };
-
-  // }
+  const fetchCount = async() => {
+    await Delay()
+    setMon(fetchDays("Mon", task).length);
+    setTue(fetchDays("Tue", task).length);
+    setWed(fetchDays("Wed", task).length);
+    setThu(fetchDays("Thu", task).length);
+    setFri(fetchDays("Fri", task).length);
+    setSat(fetchDays("Sat", task).length);
+    setSun(fetchDays("Sun", task).length);
+  };
 
   useEffect(() => {
     fetchdata();
-    // Setdays()
-  }, [])
-  const fetchDays = (day, arr) => {
-    let newarr = arr.filter((data) => {
-      return data.day === day;
-    })
-    return newarr;
-  }
-  async function dayscounter(params) {
-    let mon = (await fetchDays("Mon", task)).length;
+  }, []);
 
-    let tue = (await fetchDays("Tue", task)).length;
-    let wed = (await fetchDays("Wed", task)).length;
-    let thu = (await fetchDays("Thu", task)).length;
-    let fri = (await fetchDays("Fri", task)).length;
-    let sat = (await fetchDays("Sat", task)).length;
-    let sun = (await fetchDays("Sun", task)).length;
+  useEffect(() => {
+    if (task.length > 0) {
+      fetchCount();
+    }
+  }, [task]);
 
-  }
+  // Helper function for bar height
+  const getHeight = (count) => `${Math.min(count * 10, 100)}%`;
 
-  console.log('the value', mon)
   return (
     <div>
       <nav className='w-screen'><Nav /></nav>
-      <div className="head head text-2xl font-bold m-1 text-orange-800  flex justify-center">Weekly Statistics</div>
-      <div className='graph border w-[70vw] m-auto h-[70vh] flex justify-center '>
-        <div className="axis border w-[90%] h-[90%] border-l-0 border-r-0 border-t-0 flex gap-4">
-          <div className="mon border w-1/7"></div>
-          <div className="tue border w-1/7"></div>
-          <div className="wed "></div>
-          <div className="thurs "></div>
-          <div className="fri "></div>
-          <div className="sat "></div>
-          <div className="sun "></div>
+      <div className="head text-2xl font-bold m-1 text-orange-800 flex justify-center">Weekly Statistics</div>
+      <div className='graph border w-[70vw] m-auto h-[70vh] flex justify-center'>
+        <div className="axis border w-[90%] h-[90%] border-l-0 border-r-0 border-t-0 flex gap-4 items-end">
+          <div className="mon border w-1/7 bg-green-500 transition-all ease-out duration-1000" style={{ height: getHeight(mon) }}></div>
+          <div className="tue border w-1/7 bg-blue-500 transition-all ease-out duration-1000" style={{ height: getHeight(tue) }}></div>
+          <div className="wed border w-1/7 bg-red-500 transition-all ease-out duration-1000" style={{ height: getHeight(wed) }}></div>
+          <div className="thu border w-1/7 bg-yellow-500 transition-all ease-out duration-1000" style={{ height: getHeight(thu) }}></div>
+          <div className="fri border w-1/7 bg-purple-500 transition-all ease-out duration-1000" style={{ height: getHeight(fri) }}></div>
+          <div className="sat border w-1/7 bg-pink-500 transition-all ease-out duration-1000" style={{ height: getHeight(sat) }}></div>
+          <div className="sun border w-1/7 bg-gray-500 transition-all ease-out duration-1000" style={{ height: getHeight(sun) }}></div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Activity
+export default Activity;

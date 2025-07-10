@@ -1,0 +1,11 @@
+.mytasks::-webkit-scrollbar{
+    width: 8px;
+}
+.mytasks::-webkit-scrollbar-thumb {
+  background-color:oklch(0.65 0.22 37.07);
+  border-radius: 5px;
+}
+.mytasks::-webkit-scrollbar-track {
+  background-color:oklch(0.95 0.04 76.14);
+  border-radius: 5px;
+}
