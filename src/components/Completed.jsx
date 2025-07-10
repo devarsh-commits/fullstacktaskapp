@@ -14,7 +14,7 @@ const Completed = () => {
             alert('There is Problem with Server!',err)
         }
     }
-    useEffect(()=>fetchTask,[]);
+    useEffect(()=>{fetchTask()},[]);
   return (
     <div>
             <nav className='w-screen'><Nav/></nav>
