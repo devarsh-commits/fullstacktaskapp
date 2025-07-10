@@ -61,15 +61,15 @@ const Activity = () => {
     <div>
       <nav className='w-screen'><Nav /></nav>
       <div className="head text-2xl font-bold m-1 text-orange-800 flex justify-center">Weekly Statistics</div>
-      <div className='graph border w-[70vw] m-auto h-[70vh] flex justify-center'>
-        <div className="axis border w-[90%] h-[90%] border-l-0 border-r-0 border-t-0 flex gap-4 items-end">
-          <div className="mon border w-1/7 bg-green-500 transition-all ease-out duration-1000" style={{ height: getHeight(mon) }}></div>
-          <div className="tue border w-1/7 bg-blue-500 transition-all ease-out duration-1000" style={{ height: getHeight(tue) }}></div>
-          <div className="wed border w-1/7 bg-red-500 transition-all ease-out duration-1000" style={{ height: getHeight(wed) }}></div>
-          <div className="thu border w-1/7 bg-yellow-500 transition-all ease-out duration-1000" style={{ height: getHeight(thu) }}></div>
-          <div className="fri border w-1/7 bg-purple-500 transition-all ease-out duration-1000" style={{ height: getHeight(fri) }}></div>
-          <div className="sat border w-1/7 bg-pink-500 transition-all ease-out duration-1000" style={{ height: getHeight(sat) }}></div>
-          <div className="sun border w-1/7 bg-gray-500 transition-all ease-out duration-1000" style={{ height: getHeight(sun) }}></div>
+      <div className='graph border border-2 rounded-2xl w-[70vw] m-auto h-[70vh] flex justify-center'>
+        <div className="axis border w-[90%] h-[90%] border-l-0 border-r-0 border-t-0 flex gap-4 items-end justify-center">
+          <div className="mon border w-[7%] bg-green-500 transition-all ease-out duration-1000 flex items-start justify-center text-2xl font-bold" style={{ height: getHeight(mon) }}>{mon*10+'%'}</div>
+          <div className="tue border w-[7%] bg-blue-500 transition-all ease-out duration-1000 flex items-start justify-center text-2xl font-bold" style={{ height: getHeight(tue) }}>{tue*10+'%'}</div>
+          <div className="wed border w-[7%] bg-red-500 transition-all ease-out duration-1000 flex items-start justify-center text-2xl font-bold" style={{ height: getHeight(wed) }}>{wed*10+'%'}</div>
+          <div className="thu border w-[7%] bg-yellow-500 transition-all ease-out duration-1000 flex items-start justify-center text-2xl font-bold" style={{ height: getHeight(thu) }}>{thu*10+'%'}</div>
+          <div className="fri border w-[7%] bg-purple-500 transition-all ease-out duration-1000 flex items-start justify-center text-2xl font-bold" style={{ height: getHeight(fri) }}>{fri*10+'%'}</div>
+          <div className="sat border w-[7%] bg-pink-500 transition-all ease-out duration-1000 flex items-start justify-center text-2xl font-bold" style={{ height: getHeight(sat) }}>{sat*10+'%'}</div>
+          <div className="sun border w-[7%] bg-gray-500 transition-all ease-out duration-1000 flex items-start justify-center text-2xl font-bold" style={{ height: getHeight(sun) }}>{sun*10+'%'}</div>
         </div>
       </div>
     </div>
