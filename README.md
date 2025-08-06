@@ -1,12 +1,22 @@
-# React + Vite
+# Task Manager App (MERN Stack)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Task Manager web app built with:
 
-Currently, two official plugins are available:
+- React + Tailwind CSS (Frontend)
+- Node.js + Express.js (Backend)
+- MongoDB + Mongoose (Database)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Add new tasks
+- Mark tasks as completed
+- Delete tasks
+- View graph of completed tasks by day
+- REST API with GET, POST, PUT, DELETE
+- React Router for navigation
+- UUIDv4 for unique task IDs
+- CORS configured for cross-origin requests
 
-## Expanding the ESLint configuration
+## Coming Soon
+- Authentication with JWT
+- Deployment on Render + Netlify
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
